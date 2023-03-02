@@ -53,8 +53,8 @@ public class AuthController {
                 HttpHeaders responseHeaders = new HttpHeaders();
                 responseHeaders.add("authorization", jwtUtil.generateToken(authRequest.getUsername()));
 
-                token = ResponseEntity.ok().header(responseHeaders.toString()).body("Success");
-                //token = new ResponseEntity(responseHeaders, HttpStatus.OK);
+                //token = ResponseEntity.ok().header(responseHeaders.toString()).body("Success");
+                token = new ResponseEntity(responseHeaders, HttpStatus.OK);
             }else {
                 throw new Exception("Invalid username or password");
 
