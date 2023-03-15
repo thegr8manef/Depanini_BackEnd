@@ -148,4 +148,11 @@ public class AdminController {
 
 
     }
+
+    @GetMapping("/admin/search/{address_municipale}/{address_gov}")
+    public List<Worker> adminByAdrdess(@PathVariable(value = "address_municipale") String address_municipale,
+                                       @PathVariable(value = "address_gov") String address_gov) {
+        List<Worker> clientSearch = workerRepository.findByAddressMunicipale(address_municipale,address_gov);
+        return clientSearch;
+    }
 }
