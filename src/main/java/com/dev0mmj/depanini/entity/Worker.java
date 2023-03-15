@@ -12,8 +12,8 @@ public class Worker extends User{
    @Column(name = "cin")
     private Integer cin;
 
-    public Worker(Long id, String username, String password,String address, String image, Integer phone, String niveau, Integer cin) {
-        super(id, username, password,address, image, phone);
+    public Worker(Long id, String username, String password,String address_gov,String address_municipale, String image, Integer phone, String niveau, Integer cin) {
+        super(id, username, password,address_gov,address_municipale, image, phone);
         this.niveau = niveau;
         this.cin = cin;
     }

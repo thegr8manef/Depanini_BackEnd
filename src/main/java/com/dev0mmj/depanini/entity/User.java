@@ -23,10 +23,11 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "address_gov")
+    private String address_gov;
 
-
-    @Column(name = "address")
-    private String address;
+    @Column(name = "address_municipale")
+    private String address_municipale;
     @Column(name = "image")
     private String image;
     @Column(name = "phone")
@@ -48,12 +49,21 @@ public class User {
         this.username = username;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddressMunicipale() {
+        return address_municipale;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddressMunicipale(String address_municipale) {
+        this.address_municipale = address_municipale;
+    }
+
+
+    public String getAddressGov() {
+        return address_gov;
+    }
+
+    public void setAddressGov(String address_gov) {
+        this.address_gov = address_gov;
     }
 
     public String getImage() {
