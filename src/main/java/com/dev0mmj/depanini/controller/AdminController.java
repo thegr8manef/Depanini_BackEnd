@@ -36,7 +36,8 @@ public class AdminController {
         Worker workerUpdate = workerRepository.findById(workerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Worker not found for this id :: " + workerId));
         workerUpdate.setUsername(workerDetails.getUsername());
-        workerUpdate.setAddress(workerDetails.getAddress());
+        workerUpdate.setAddressMunicipale(workerDetails.getAddressMunicipale());
+        workerUpdate.setAddressGov(workerDetails.getAddressGov());
         workerUpdate.setImage(workerDetails.getImage());
         workerUpdate.setPhone(workerDetails.getPhone());
         workerUpdate.setCin(workerDetails.getCin());
@@ -51,7 +52,8 @@ public class AdminController {
         Client clientUpdate = clientRepository.findById(clientId)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found for this id :: " + clientId));
         clientUpdate.setUsername(clientDetails.getUsername());
-        clientUpdate.setAddress(clientDetails.getAddress());
+        clientUpdate.setAddressMunicipale(clientDetails.getAddressMunicipale());
+        clientUpdate.setAddressGov(clientDetails.getAddressGov());
         clientUpdate.setImage(clientDetails.getImage());
         clientUpdate.setPhone(clientDetails.getPhone());
         clientUpdate.setPassword(clientDetails.getPassword());
