@@ -38,8 +38,9 @@ public class AuthController {
     private UserRepository userRepository;
 
     @PostMapping("/authenticate")
-    public ResponseEntity generateToken(@RequestBody AuthRequest authRequest)throws Exception{
+    public User generateToken(@RequestBody AuthRequest authRequest)throws Exception{
         ResponseEntity token;
+        User _user = userRepository.findByUsername(authRequest.getUsername());
         try {
 
 
@@ -67,7 +68,7 @@ public class AuthController {
             throw new Exception("Invalid username or password");
         }
 
-        return token;
+        return _user;
     }
 
     @PostMapping("/authenticate/register")

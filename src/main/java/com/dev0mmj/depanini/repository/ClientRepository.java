@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 public interface ClientRepository extends JpaRepository<Client,Long> {
     Client findByUsername(String username);
 
+    Client findByPassword(String password);
+
 }

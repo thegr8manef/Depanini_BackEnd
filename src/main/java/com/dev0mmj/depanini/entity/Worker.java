@@ -10,9 +10,9 @@ public class Worker extends User{
     @Column(name = "niveau")
     private String niveau;
    @Column(name = "cin")
-    private Integer cin;
+    private String cin;
 
-    public Worker(Long id, String username, String password,String address_gov,String address_municipale, String image, Integer phone, String niveau, Integer cin) {
+    public Worker(Long id, String username, String password,String address_gov,String address_municipale, String image, Integer phone, String niveau, String cin) {
         super(id, username, password,address_gov,address_municipale, image, phone);
         this.niveau = niveau;
         this.cin = cin;
@@ -30,11 +30,11 @@ public class Worker extends User{
         this.niveau = niveau;
     }
 
-    public Integer getCin() {
+    public String getCin() {
         return cin;
     }
 
-    public void setCin(Integer cin) {
+    public void setCin(String cin) {
         this.cin = cin;
     }
 }

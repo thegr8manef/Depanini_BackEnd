@@ -31,6 +31,8 @@ public class WorkerController {
         Worker worker = workerRepository.findById(workerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Worker not found for this id :: " + workerId));
         worker.setUsername(workerDetails.getUsername());
+        String encryptedPassword = passwordEncoder.encode(worker.getPassword());
+        worker.setPassword(encryptedPassword);
         final Worker updatedUser = workerRepository.save(worker);
         return ResponseEntity.ok(updatedUser);
     }
@@ -47,11 +49,12 @@ public class WorkerController {
     }
 
     @PostMapping(value = "/worker/signup")
-    public void createWorker( @RequestBody Worker worker) throws Exception {
+    public Worker createWorker( @RequestBody Worker worker) throws Exception {
         String encryptedPassword = passwordEncoder.encode(worker.getPassword());
         worker.setPassword(encryptedPassword);
         if (workerRepository.findByUsername(worker.getUsername()) == null){
             workerRepository.save(worker);
+            return worker;
         }
         else {
             throw new Exception("username is already exist");

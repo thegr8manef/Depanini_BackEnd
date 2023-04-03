@@ -25,11 +25,12 @@ public class ClientController {
         passwordEncoder = new BCryptPasswordEncoder();
     }
     @PostMapping(value = "/client/signup")
-    public void createClient(@RequestBody Client client) throws Exception {
+    public Client createClient(@RequestBody Client client) throws Exception {
         String encryptedPassword = passwordEncoder.encode(client.getPassword());
         client.setPassword(encryptedPassword);
         if (clientRepository.findByUsername(client.getUsername()) == null) {
             clientRepository.save(client);
+            return client;
         } else {
             throw new Exception("username is already exist");
         }
@@ -63,8 +64,10 @@ public class ClientController {
         Client client = clientRepository.findById(clientId)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found for this id :: " + clientId));
         client.setUsername(userDetails.getUsername());
-        final Client updateClient = clientRepository.save(client);
-        return ResponseEntity.ok(updateClient);
-    }
+            String encryptedPassword = passwordEncoder.encode(client.getPassword());
+            client.setPassword(encryptedPassword);
+            final Client updateClient = clientRepository.save(client);
+            return ResponseEntity.ok(updateClient);
+        }
 
 }
