@@ -7,14 +7,14 @@ import javax.persistence.Entity;
 @Entity
 public class Worker extends User{
 
-    @Column(name = "niveau")
-    private String niveau;
+    @Column(name = "speciality")
+    private String speciality;
    @Column(name = "cin")
     private String cin;
 
-    public Worker(Long id, String username, String password,String address_gov,String address_municipale, String image, Integer phone, String niveau, String cin) {
+    public Worker(Long id, String username, String password,String address_gov,String address_municipale, String image, Integer phone, String speciality, String cin) {
         super(id, username, password,address_gov,address_municipale, image, phone);
-        this.niveau = niveau;
+        this.speciality = speciality;
         this.cin = cin;
     }
 
@@ -22,12 +22,12 @@ public class Worker extends User{
 
     }
 
-    public String getNiveau() {
-        return niveau;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public void setNiveau(String niveau) {
-        this.niveau = niveau;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 
     public String getCin() {

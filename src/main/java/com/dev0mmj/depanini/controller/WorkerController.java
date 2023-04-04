@@ -36,6 +36,15 @@ public class WorkerController {
         final Worker updatedUser = workerRepository.save(worker);
         return ResponseEntity.ok(updatedUser);
     }
+    @PutMapping("/worker/modify/speciality/{id}")
+    public ResponseEntity<Worker> updateWorkerSpeciality(@PathVariable(value = "id") Long workerId,
+                                               @RequestBody Worker workerDetails) throws ResourceNotFoundException {
+        Worker worker = workerRepository.findById(workerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Worker not found for this id :: " + workerId));
+        worker.setSpeciality(workerDetails.getSpeciality());
+        final Worker updatedUser = workerRepository.save(worker);
+        return ResponseEntity.ok(updatedUser);
+    }
     @GetMapping("/worker/search/{id}")
     public ResponseEntity<Worker> getWorkerById(@PathVariable(value = "id") Long workerId)
             throws ResourceNotFoundException {

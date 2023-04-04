@@ -41,7 +41,7 @@ public class AdminController {
         workerUpdate.setImage(workerDetails.getImage());
         workerUpdate.setPhone(workerDetails.getPhone());
         workerUpdate.setCin(workerDetails.getCin());
-        workerUpdate.setNiveau(workerDetails.getNiveau());
+        workerUpdate.setSpeciality(workerDetails.getSpeciality());
         final Worker adminUpdateWorker = workerRepository.save(workerUpdate);
         return ResponseEntity.ok(adminUpdateWorker);
     }
