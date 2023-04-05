@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.userDetailsService(detailsService);
+        auth.userDetailsService(detailsService);
 
     }
 
@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/workers/**","/clients/**","/client/**","/worker/**","/admin/**","/authenticate/**","/search/**")
+        http.csrf().disable().authorizeRequests().antMatchers("/workers/**","/clients/**","/client/**","/worker/**","/admin/**","/authenticate/**","/search/**","/users/**")
                 .permitAll().anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
